@@ -37,13 +37,19 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CharacterCollection.cs" />
     <Compile Include="Data\Craft.cs" />
     <Compile Include="Data\Movie.cs" />
     <Compile Include="Data\Character.cs" />
+    <Compile Include="Data\MovieCollection.cs" />
     <Compile Include="Data\Planet.cs" />
+    <Compile Include="Data\PlanetCollection.cs" />
     <Compile Include="Data\Species.cs" />
+    <Compile Include="Data\SpeciesCollection.cs" />
     <Compile Include="Data\Starship.cs" />
+    <Compile Include="Data\StarshipCollection.cs" />
     <Compile Include="Data\Vehicle.cs" />
+    <Compile Include="Data\VehicleCollection.cs" />
     <Compile Include="SwapiCollection.cs" />
     <Compile Include="SwapiEntity.cs" />
     <Compile Include="SwapiObject.cs" />
