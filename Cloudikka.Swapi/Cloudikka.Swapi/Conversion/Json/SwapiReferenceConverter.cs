@@ -7,9 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cloudikka.Swapi.Conversion.Json {
-    public class TryThisConverter : JsonConverter {
+    public class SwapiReferenceConverter : JsonConverter {
         public override bool CanConvert(Type objectType) {
             var typeDefinition = typeof(SwapiReference<>);
+
             if(objectType.GetGenericTypeDefinition() == typeDefinition) {
                 return true;
             }
@@ -18,20 +19,22 @@ namespace Cloudikka.Swapi.Conversion.Json {
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
-            Uri uri;
+            if(reader.ValueType == typeof(string)) {
+                Uri uri;
 
-            if(reader.Value is string && Uri.TryCreate(reader.Value as string, UriKind.RelativeOrAbsolute, out uri)) {
-                var result = Activator.CreateInstance(objectType) as SwapiObject;
-                result.Url = uri;
+                if(Uri.TryCreate(reader.Value as string, UriKind.RelativeOrAbsolute, out uri)) {
+                    var result = Activator.CreateInstance(objectType) as SwapiObject;
+                    result.Url = uri;
 
-                return result;
+                    return result;
+                }
             }
 
             return existingValue;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-            
+            throw new NotImplementedException();
         }
     }
 }

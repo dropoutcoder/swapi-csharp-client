@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cloudikka.Swapi {
-    [JsonConverter(typeof(TryThisConverter))]
+    [JsonConverter(typeof(SwapiReferenceConverter))]
     public class SwapiReference<T> : SwapiObject
         where T : SwapiObject, new() {
         [JsonIgnore()]

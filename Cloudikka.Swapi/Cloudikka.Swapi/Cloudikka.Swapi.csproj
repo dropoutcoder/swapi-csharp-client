@@ -39,7 +39,7 @@
   <ItemGroup>
     <Compile Include="Configuration\DefaultSwapiConfiguration.cs" />
     <Compile Include="Configuration\SwapiConfiguration.cs" />
-    <Compile Include="Conversion\Json\TryThis.cs" />
+    <Compile Include="Conversion\Json\SwapiReferenceConverter.cs" />
     <Compile Include="Data\CharacterCollection.cs" />
     <Compile Include="Data\Craft.cs" />
     <Compile Include="Data\Movie.cs" />
