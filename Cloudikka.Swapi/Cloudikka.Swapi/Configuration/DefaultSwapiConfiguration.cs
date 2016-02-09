@@ -11,7 +11,6 @@ namespace Cloudikka.Swapi.Configuration {
         internal static SwapiConfiguration Create() {
             var uri = new Uri(baseAddress);
             var config = new DefaultSwapiConfiguration(uri);
-
             return config;
         }
 
