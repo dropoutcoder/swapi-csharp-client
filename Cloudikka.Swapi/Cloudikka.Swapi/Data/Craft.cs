@@ -68,12 +68,12 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("pilots")]
-        public SwapiReference<CharacterCollectionPage> Characters {
+        public IEnumerable<SwapiReference<CharacterCollectionPage>> Characters {
             get; set;
         }
 
         [JsonProperty("films")]
-        public SwapiReference<MovieCollectionPage> Movies {
+        public IEnumerable<SwapiReference<MovieCollectionPage>> Movies {
             get; set;
         }
     }
