@@ -25,7 +25,7 @@ namespace Cloudikka.Swapi.Data {
             set;
         }
 
-[JsonProperty("cost_in_credits")]
+        [JsonProperty("cost_in_credits")]
         public string Price {
             get;
             set;
@@ -68,12 +68,12 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("pilots")]
-        public IEnumerable<SwapiReference<Character>> Characters {
+        public SwapiReference<CharacterCollectionPage> Characters {
             get; set;
         }
 
         [JsonProperty("films")]
-        public IEnumerable<SwapiReference<Movie>> Movies {
+        public SwapiReference<MovieCollectionPage> Movies {
             get; set;
         }
     }

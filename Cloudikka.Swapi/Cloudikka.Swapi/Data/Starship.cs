@@ -20,7 +20,7 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("MGLT")]
-        public double MaxMegalightsSpeed {
+        public double MaxMegaLightsSpeed {
             get;
             set;
         }

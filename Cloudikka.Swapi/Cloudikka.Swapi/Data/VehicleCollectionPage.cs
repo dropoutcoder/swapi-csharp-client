@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cloudikka.Swapi.Data {
-    public class PlanetCollection : SwapiCollection<Planet> {
+    public class VehicleCollectionPage : SwapiCollectionPage<Vehicle> {
     }
 }
