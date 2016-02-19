@@ -32,7 +32,7 @@ namespace Cloudikka.Swapi {
             private set;
         }
 
-        public async Task<T> GetAsync<T>(SwapiReference<T> reference)
+        public async Task<T> GetAsync<T>(SwapiEntityReference<T> reference)
             where T : SwapiObject, new() {
             if(reference == null) {
                 throw new ArgumentNullException(nameof(reference));

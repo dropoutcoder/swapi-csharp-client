@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Cloudikka.Swapi.Conversion.Json {
     public class SwapiReferenceConverter : JsonConverter {
         public override bool CanConvert(Type objectType) {
-            var typeDefinition = typeof(SwapiReference<>);
+            var typeDefinition = typeof(SwapiEntityReference<>);
 
             if(objectType.GetGenericTypeDefinition() == typeDefinition) {
                 return true;
@@ -19,11 +19,11 @@ namespace Cloudikka.Swapi.Conversion.Json {
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
-            if(reader.ValueType == typeof(string)) {
+            if(reader.TokenType == JsonToken.String) {
                 Uri uri;
 
                 if(Uri.TryCreate(reader.Value as string, UriKind.RelativeOrAbsolute, out uri)) {
-                    var result = Activator.CreateInstance(objectType) as SwapiObject;
+                    var result = Activator.CreateInstance(objectType) as SwapiReference;
                     result.Url = uri;
 
                     return result;

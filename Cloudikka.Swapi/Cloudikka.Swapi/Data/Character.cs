@@ -46,27 +46,27 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("homeworld")]
-        public SwapiReference<Planet> Homeworld {
+        public SwapiEntityReference<Planet> Homeworld {
             get; set;
         }
 
         [JsonProperty("species")]
-        public IEnumerable<SwapiReference<Species>> Species {
+        public IEnumerable<SwapiEntityReference<Species>> Species {
             get; set;
         }
 
         [JsonProperty("films")]
-        public IEnumerable<SwapiReference<Movie>> Movies {
+        public IEnumerable<SwapiEntityReference<Movie>> Movies {
             get; set;
         }
 
         [JsonProperty("starships")]
-        public IEnumerable<SwapiReference<Starship>> Starships {
+        public IEnumerable<SwapiEntityReference<Starship>> Starships {
             get; set;
         }
 
         [JsonProperty("vehicles")]
-        public IEnumerable<SwapiReference<Vehicle>> Vehicles {
+        public IEnumerable<SwapiEntityReference<Vehicle>> Vehicles {
             get; set;
         }
     }

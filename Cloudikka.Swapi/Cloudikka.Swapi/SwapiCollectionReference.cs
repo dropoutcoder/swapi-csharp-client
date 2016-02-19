@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cloudikka.Swapi {
-    public abstract class SwapiReference {
-        [JsonProperty("url")]
-        public Uri Url {
+    public class SwapiCollectionReference<T> : SwapiReference
+        where T : IEnumerable<SwapiReference>, new() {
+        [JsonIgnore()]
+        public T Value {
             get;
-            set;
+            internal set;
         }
     }
 }
