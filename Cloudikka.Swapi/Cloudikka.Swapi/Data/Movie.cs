@@ -13,7 +13,7 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("episode_id")]
-        public int Episode {
+        public string Episode {
             get; set;
         }
 

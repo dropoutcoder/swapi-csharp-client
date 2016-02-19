@@ -26,7 +26,7 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("average_height")]
-        public int Height {
+        public string Height {
             get;
             set;
         }

@@ -1,4 +1,5 @@
 ﻿using Cloudikka.Swapi.Configuration;
+using Cloudikka.Swapi.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace Cloudikka.Swapi {
         }
 
         public async Task<T> GetAsync<T>(SwapiEntityReference<T> reference)
-            where T : SwapiObject, new() {
+            where T : SwapiEntity, new() {
             if(reference == null) {
                 throw new ArgumentNullException(nameof(reference));
             }
@@ -62,14 +63,76 @@ namespace Cloudikka.Swapi {
                     reference.Value = JsonConvert.DeserializeObject<T>(json);
 
                     return reference.Value;
-                } catch (JsonSerializationException jse) {
+                } catch(JsonSerializationException jse) {
                     Debug.WriteLineIf(!String.IsNullOrWhiteSpace(jse.Message), jse.Message);
                     throw;
-                }                
+                }
             } else {
                 /// TODO: Handle better failed requests
                 throw new HttpRequestException(response.ReasonPhrase);
             }
+        }
+
+        public async Task<SwapiCollection<T>> GetCollectionAsync<T>(SwapiCollectionReference<T> reference)
+            where T : SwapiEntity, new() {
+            if(reference == null) {
+                throw new ArgumentNullException(nameof(reference));
+            }
+
+            if(reference.Url == null) {
+                /// TODO: Describe exception with reasonable message
+                throw new InvalidOperationException();
+            }
+
+            if(this.HttpClient == null) {
+                /// TODO: Describe exception with reasonable message
+                throw new InvalidOperationException();
+            }
+
+            if(this.Configuration == null) {
+                /// TODO: Describe exception with reasonable message
+                throw new InvalidOperationException();
+            }
+            do {
+                var response = await this.HttpClient.GetAsync(reference.Url);
+
+                if(response.IsSuccessStatusCode) {
+
+                    /// TODO: Handle json parsing errors
+                    try {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<SwapiCollection<T>>(json);
+                        if(reference.Value == null) {
+                            reference.Value = result;
+                        } else {
+                            reference.Value = result.Merge(reference.Value);
+                        }
+
+                        reference.Url = result.Next;
+                    } catch(Exception e) {
+                        Debug.WriteLineIf(!String.IsNullOrWhiteSpace(e.Message), e.Message);
+                        throw;
+                    }
+                } else {
+                    /// TODO: Handle better failed requests
+                    throw new HttpRequestException(response.ReasonPhrase);
+                }
+            } while(reference.Url != null);
+
+            return reference.Value;
+        }
+
+        public async Task<Root> GetAllAsync() {
+            var root = await this.GetAsync<Root>(new SwapiEntityReference<Root> { Url = Configuration.BaseAddress });
+
+            var characters = await this.GetCollectionAsync(root.Characters);
+            var movies = await this.GetCollectionAsync(root.Movies);
+            var planets = await this.GetCollectionAsync(root.Planets);
+            var species = await this.GetCollectionAsync(root.Species);
+            var starships = await this.GetCollectionAsync(root.Starships);
+            var vehicles = await this.GetCollectionAsync(root.Vehicles);
+
+            return root;
         }
     }
 }

@@ -6,34 +6,34 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cloudikka.Swapi.Data {
-    public class Root : SwapiObject {
+    public class Root : SwapiEntity {
         [JsonProperty("people")]
-        public SwapiEntityReference<CharacterCollectionPage> Characters {
+        public SwapiCollectionReference<Character> Characters {
             get; set;
         }
 
         [JsonProperty("planets")]
-        public SwapiEntityReference<PlanetCollectionPage> Planets {
+        public SwapiCollectionReference<Planet> Planets {
             get; set;
         }
 
         [JsonProperty("films")]
-        public SwapiEntityReference<MovieCollectionPage> Movies {
+        public SwapiCollectionReference<Movie> Movies {
             get; set;
         }
 
         [JsonProperty("species")]
-        public SwapiEntityReference<SpeciesCollectionPage> Species {
+        public SwapiCollectionReference<Species> Species {
             get; set;
         }
 
         [JsonProperty("vehicles")]
-        public SwapiEntityReference<VehicleCollectionPage> Vehicles {
+        public SwapiCollectionReference<Vehicle> Vehicles {
             get; set;
         }
 
         [JsonProperty("starships")]
-        public SwapiEntityReference<StarshipCollectionPage> Starships {
+        public SwapiCollectionReference<Starship> Starships {
             get; set;
         }
     }

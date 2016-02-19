@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Cloudikka.Swapi {
-    public abstract class SwapiCollectionPage<T> : SwapiObject
+    public class SwapiCollection<T> : SwapiObject
         where T : SwapiEntity {
         [JsonProperty("count")]
         public int Count {
@@ -31,6 +30,11 @@ namespace Cloudikka.Swapi {
         public IEnumerable<T> Collection {
             get;
             set;
+        }
+
+        public SwapiCollection<T> Merge(SwapiCollection<T> collection) {
+            this.Collection = collection.Collection.Concat(this.Collection);
+            return this;
         }
     }
 }

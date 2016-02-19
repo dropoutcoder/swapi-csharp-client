@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cloudikka.Swapi.Data {
-    public class StarshipCollectionPage : SwapiCollectionPage<Starship> {
+    public class StarshipCollection : SwapiCollection<Starship> {
     }
 }
