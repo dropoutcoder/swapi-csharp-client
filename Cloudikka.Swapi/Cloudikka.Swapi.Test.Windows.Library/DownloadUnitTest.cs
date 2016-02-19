@@ -19,6 +19,21 @@ namespace Cloudikka.Swapi.Test.Windows.Library
         }
 
         [TestMethod]
+        public async Task GetRootWithValuesTest() {
+            var reference = new SwapiEntityReference<Root>() { Url = new Uri("http://swapi.co/api/") };
+            var root = await Client.GetAsync<Root>(reference);
+
+            await Client.GetAsync(root.Characters);
+            await Client.GetAsync(root.Movies);
+            await Client.GetAsync(root.Planets);
+            await Client.GetAsync(root.Species);
+            await Client.GetAsync(root.Starships);
+            await Client.GetAsync(root.Vehicles);
+
+            var result = root;
+        }
+
+        [TestMethod]
         public async Task GetPeopleTest() {
             var reference = new SwapiEntityReference<CharacterCollectionPage>() { Url = new Uri("http://swapi.co/api/people/") };
             var result = await Client.GetAsync<CharacterCollectionPage>(reference);

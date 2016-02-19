@@ -32,25 +32,25 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("length")]
-        public double Length {
+        public string Length {
             get;
             set;
         }
 
         [JsonProperty("max_atmosphering_speed")]
-        public int MaxAtmosphericSpeed {
+        public string MaxAtmosphericSpeed {
             get;
             set;
         }
 
         [JsonProperty("crew")]
-        public int Crew {
+        public string Crew {
             get;
             set;
         }
          
         [JsonProperty("passengers")]
-        public int Passengers {
+        public string Passengers {
             get;
             set;
         }

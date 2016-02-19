@@ -14,19 +14,19 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("rotation_period")]
-        public int RotationPeriod {
+        public string RotationPeriod {
             get;
             set;
         }
 
         [JsonProperty("orbital_period")]
-        public int OrbitalPeriod {
+        public string OrbitalPeriod {
             get;
             set;
         }
 
         [JsonProperty("diameter")]
-        public int Diameter {
+        public string Diameter {
             get;
             set;
         }
@@ -50,13 +50,13 @@ namespace Cloudikka.Swapi.Data {
         }
 
         [JsonProperty("surface_water")]
-        public int WaterCoverage {
+        public string WaterCoverage {
             get;
             set;
         }
 
         [JsonProperty("population")]
-        public long Population {
+        public string Population {
             get;
             set;
         }
