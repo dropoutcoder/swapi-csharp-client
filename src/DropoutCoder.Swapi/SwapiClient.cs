@@ -136,14 +136,18 @@ namespace DropoutCoder.Swapi {
         }
 
         public async Task<Root> GetAllAsync() {
-            var root = await this.GetAsync<Root>(new SwapiEntityReference<Root> { Url = Configuration.BaseAddress });
+            var root = await this.GetAsync(new SwapiEntityReference<Root> { Url = Configuration.BaseAddress });
 
-            var characters = await this.GetCollectionAsync(root.Characters);
-            var movies = await this.GetCollectionAsync(root.Movies);
-            var planets = await this.GetCollectionAsync(root.Planets);
-            var species = await this.GetCollectionAsync(root.Species);
-            var starships = await this.GetCollectionAsync(root.Starships);
-            var vehicles = await this.GetCollectionAsync(root.Vehicles);
+            Task[] tasks = new Task[] {
+                this.GetCollectionAsync(root.Characters),
+                this.GetCollectionAsync(root.Movies),
+                this.GetCollectionAsync(root.Planets),
+                this.GetCollectionAsync(root.Species),
+                this.GetCollectionAsync(root.Starships),
+                this.GetCollectionAsync(root.Vehicles)
+            };
+
+            await Task.WhenAll(tasks);
 
             return root;
         }
