@@ -15,11 +15,7 @@ namespace DropoutCoder.Swapi {
         }
 
         public SwapiClient(SwapiConfiguration config) {
-            if (config == null) {
-                throw new ArgumentNullException(nameof(config));
-            }
-
-            this.Configuration = config;
+            this.Configuration = config ?? throw new ArgumentNullException(nameof(config));
         }
 
         public SwapiConfiguration Configuration {
