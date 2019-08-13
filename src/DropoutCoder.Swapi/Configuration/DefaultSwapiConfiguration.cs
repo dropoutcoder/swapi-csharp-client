@@ -2,7 +2,7 @@
 
 namespace DropoutCoder.Swapi.Configuration {
     internal class DefaultSwapiConfiguration : SwapiConfiguration {
-        private static string baseAddress = "http://swapi.co/api/";
+        private static string baseAddress = "https://swapi.co/api/";
 
         internal static SwapiConfiguration Create() {
             var uri = new Uri(baseAddress);
