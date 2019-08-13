@@ -1,4 +1,5 @@
 ﻿using System;
+using DropoutCoder.Swapi.Globalization;
 
 namespace DropoutCoder.Swapi.Configuration {
     public class SwapiConfiguration {
@@ -14,5 +15,10 @@ namespace DropoutCoder.Swapi.Configuration {
             get;
             private set;
         }
+
+        public Language Language {
+            get;
+            set;
+        } = Language.English;
     }
 }
