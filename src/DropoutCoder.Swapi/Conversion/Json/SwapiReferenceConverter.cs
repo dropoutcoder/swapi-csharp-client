@@ -1,4 +1,5 @@
 ﻿using System;
+using DropoutCoder.Swapi.Data;
 using Newtonsoft.Json;
 
 namespace DropoutCoder.Swapi.Conversion.Json {

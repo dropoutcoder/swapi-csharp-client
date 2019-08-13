@@ -6,65 +6,67 @@ namespace DropoutCoder.Swapi.Data {
         [JsonProperty("name")]
         public string Name {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("rotation_period")]
         public string RotationPeriod {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("orbital_period")]
         public string OrbitalPeriod {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("diameter")]
         public string Diameter {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("climate")]
         public string Climate {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("gravity")]
         public string Gravity {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("terrain")]
         public string Terrain {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("surface_water")]
         public string WaterCoverage {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("population")]
         public string Population {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("residents")]
         public IEnumerable<SwapiEntityReference<Character>> Residents {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("films")]
         public IEnumerable<SwapiEntityReference<Movie>> Movies {
-            get; set;
+            get;
+            internal set;
         }
     }
 }

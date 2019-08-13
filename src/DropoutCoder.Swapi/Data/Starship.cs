@@ -5,19 +5,19 @@ namespace DropoutCoder.Swapi.Data {
         [JsonProperty("starship_class")]
         public string Class {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("hyperdrive_rating")]
         public string HyperdriveRating {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("MGLT")]
         public string MaxMegaLightsSpeed {
             get;
-            set;
+            internal set;
         }
     }
 }

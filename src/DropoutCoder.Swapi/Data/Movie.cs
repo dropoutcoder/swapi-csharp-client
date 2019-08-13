@@ -6,58 +6,68 @@ namespace DropoutCoder.Swapi.Data {
     public class Movie : SwapiEntity {
         [JsonProperty("title")]
         public string Title {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("episode_id")]
         public string Episode {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("opening_crawl")]
         public string Introduction {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("director")]
         public string Director {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("producer")]
         public string Producer {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("release_date")]
         public DateTime Released {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("characters")]
         public IEnumerable<SwapiEntityReference<Character>> Characters {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("planets")]
         public IEnumerable<SwapiEntityReference<Planet>> Planets {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("starships")]
         public IEnumerable<SwapiEntityReference<Starship>> Starships {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("vehicles")]
         public IEnumerable<SwapiEntityReference<Vehicle>> Vehicles {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("species")]
         public IEnumerable<SwapiEntityReference<Species>> Species {
-            get; set;
+            get;
+            internal set;
         }
     }
 }

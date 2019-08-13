@@ -6,71 +6,73 @@ namespace DropoutCoder.Swapi.Data {
         [JsonProperty("name")]
         public string Name {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("model")]
         public string Model {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("manufacturer")]
         public string Manufacturer {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("cost_in_credits")]
         public string Price {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("length")]
         public string Length {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("max_atmosphering_speed")]
         public string MaxAtmosphericSpeed {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("crew")]
         public string Crew {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("passengers")]
         public string Passengers {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("cargo_capacity")]
         public string CargoCapacity {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("consumables")]
         public string Consumables {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("pilots")]
         public IEnumerable<SwapiEntityReference<CharacterCollection>> Characters {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("films")]
         public IEnumerable<SwapiEntityReference<MovieCollection>> Movies {
-            get; set;
+            get;
+            internal set;
         }
     }
 }

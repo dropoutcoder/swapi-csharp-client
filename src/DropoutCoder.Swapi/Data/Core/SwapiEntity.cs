@@ -1,16 +1,16 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace DropoutCoder.Swapi {
+namespace DropoutCoder.Swapi.Data {
     public abstract class SwapiEntity : SwapiObject {
         [JsonProperty("created")]
         public DateTime Created {
-            get; set;
+            get; internal set;
         }
 
         [JsonProperty("edited")]
         public DateTime Edited {
-            get; set;
+            get; internal set;
         }
     }
 }

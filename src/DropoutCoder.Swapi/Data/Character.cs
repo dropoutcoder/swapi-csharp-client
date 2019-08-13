@@ -6,63 +6,73 @@ namespace DropoutCoder.Swapi.Data {
         [JsonProperty("name")]
         public string Name {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("height")]
         public string Height {
             get;
-            set;
+            internal set;
         }
 
         [JsonProperty("hair_color")]
         public string HairColor {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("skin_color")]
         public string SkinColor {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("eye_color")]
         public string EyeColor {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("birth_year")]
         public string YearOfBirth {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("gender")]
         public string Gender {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("homeworld")]
         public SwapiEntityReference<Planet> Homeworld {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("species")]
         public IEnumerable<SwapiEntityReference<Species>> Species {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("films")]
         public IEnumerable<SwapiEntityReference<Movie>> Movies {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("starships")]
         public IEnumerable<SwapiEntityReference<Starship>> Starships {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("vehicles")]
         public IEnumerable<SwapiEntityReference<Vehicle>> Vehicles {
-            get; set;
+            get;
+            internal set;
         }
     }
 }

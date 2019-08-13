@@ -4,32 +4,38 @@ namespace DropoutCoder.Swapi.Data {
     public class Root : SwapiEntity {
         [JsonProperty("people")]
         public SwapiCollectionReference<Character> Characters {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("planets")]
         public SwapiCollectionReference<Planet> Planets {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("films")]
         public SwapiCollectionReference<Movie> Movies {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("species")]
         public SwapiCollectionReference<Species> Species {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("vehicles")]
         public SwapiCollectionReference<Vehicle> Vehicles {
-            get; set;
+            get;
+            internal set;
         }
 
         [JsonProperty("starships")]
         public SwapiCollectionReference<Starship> Starships {
-            get; set;
+            get;
+            internal set;
         }
     }
 }

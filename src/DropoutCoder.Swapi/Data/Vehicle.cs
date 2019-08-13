@@ -5,7 +5,7 @@ namespace DropoutCoder.Swapi.Data {
         [JsonProperty("vehicle_class")]
         public string Class {
             get;
-            set;
+            internal set;
         }
     }
 }
