@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DropoutCoder.Swapi.Configuration;
@@ -56,10 +57,17 @@ namespace DropoutCoder.Swapi {
             if (response.IsSuccessStatusCode) {
                 /// TODO: Handle json parsing errors
                 try {
-                    var json = await response.Content.ReadAsStringAsync();
-                    reference.Value = JsonConvert.DeserializeObject<T>(json);
+                    using (var stream = await response.Content.ReadAsStreamAsync()) {
+                        using (var streamReader = new StreamReader(stream)) {
+                            using (var jsonReader = new JsonTextReader(streamReader)) {
+                                var serializer = new JsonSerializer();
 
-                    return reference.Value;
+                                reference.Value = serializer.Deserialize<T>(jsonReader);
+
+                                return reference.Value;
+                            }
+                        }
+                    }
                 } catch (JsonSerializationException jse) {
                     Debug.WriteLineIf(!String.IsNullOrWhiteSpace(jse.Message), jse.Message);
                     throw;
@@ -97,15 +105,23 @@ namespace DropoutCoder.Swapi {
 
                     /// TODO: Handle json parsing errors
                     try {
-                        var json = await response.Content.ReadAsStringAsync();
-                        var result = JsonConvert.DeserializeObject<SwapiCollection<T>>(json);
-                        if (reference.Value == null) {
-                            reference.Value = result;
-                        } else {
-                            reference.Value = result.Merge(reference.Value);
-                        }
+                        using (var stream = await response.Content.ReadAsStreamAsync()) {
+                            using (var streamReader = new StreamReader(stream)) {
+                                using (var jsonReader = new JsonTextReader(streamReader)) {
+                                    var serializer = new JsonSerializer();
 
-                        reference.Url = result.Next;
+                                    var result = serializer.Deserialize<SwapiCollection<T>>(jsonReader);
+
+                                    if (reference.Value == null) {
+                                        reference.Value = result;
+                                    } else {
+                                        reference.Value = result.Merge(reference.Value);
+                                    }
+
+                                    reference.Url = result.Next;
+                                }
+                            }
+                        }
                     } catch (Exception e) {
                         Debug.WriteLineIf(!String.IsNullOrWhiteSpace(e.Message), e.Message);
                         throw;
