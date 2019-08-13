@@ -78,7 +78,7 @@ namespace DropoutCoder.Swapi {
             }
         }
 
-        public async Task<SwapiCollection<T>> GetCollectionAsync<T>(SwapiCollectionReference<T> reference)
+        public async Task<SwapiCollection<T>> GetCollectionAsync<T>(SwapiCollectionReference<T> reference, string searchTerm = null)
             where T : SwapiEntity, new() {
             if (reference == null) {
                 throw new ArgumentNullException(nameof(reference));
@@ -99,7 +99,9 @@ namespace DropoutCoder.Swapi {
                 throw new InvalidOperationException();
             }
             do {
-                var response = await this.HttpClient.GetAsync(reference.Url);
+                var querystring = String.IsNullOrWhiteSpace(searchTerm) ? String.Empty : $"?search={searchTerm}";
+
+                var response = await this.HttpClient.GetAsync(reference.Url + querystring);
 
                 if (response.IsSuccessStatusCode) {
 
